@@ -23,10 +23,9 @@ import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import data.db.sqlite_exposed.deleteGraph
 import data.db.sqlite_exposed.getAllGraphs
-import data.tools.graphGenerators.flowerSnark
-import data.tools.graphGenerators.randomTree
-import data.tools.graphGenerators.starDirected
-import data.tools.graphGenerators.starUndirected
+import data.tools.graphGenerators.AbstractGraphGenerator.GraphGeneratorType
+import data.tools.graphGenerators.AbstractGraphGenerator.GraphGeneratorType.Companion.DEFAULT_GENERATOR
+import data.tools.graphGenerators.factory.GraphGeneratorFactoryImpl
 import kotlinx.coroutines.CoroutineScope
 import model.graph_model.Graph
 import ui.components.MyWindowState
@@ -39,7 +38,7 @@ class IntroWindowVM(
     val fileLoaderException: MutableState<String?> = mutableStateOf(null)
     val chosenGraph = mutableStateOf("Saved")
     val graphSize = mutableStateOf("")
-    val chosenGenerator = mutableStateOf("Random Tree")
+    val chosenGenerator: MutableState<GraphGeneratorType> = mutableStateOf(DEFAULT_GENERATOR)
     val weightMax = mutableStateOf("1")
     val graphTypes = listOf("Saved", "Manual", "Generate", "Empty")
 
@@ -60,13 +59,9 @@ class IntroWindowVM(
 
     fun generateGraph(maxWeight: Int): Graph {
         val graphSize = graphSize.value.toInt()
-        return when (chosenGenerator.value) {
-            "Random Tree" -> randomTree(graphSize, maxWeight)
-            "Flower Snark" -> flowerSnark(graphSize)
-            "Star Directed" -> starDirected(graphSize)
-            "Star Undirected" -> starUndirected(graphSize)
-            else -> createEmptyGraph()
-        }
+        val graphGenerator = GraphGeneratorFactoryImpl.getGraphGenerator(chosenGenerator.value)
+
+        return graphGenerator.generate(graphSize, maxWeight)
     }
 
     fun createEmptyGraph(): Graph {

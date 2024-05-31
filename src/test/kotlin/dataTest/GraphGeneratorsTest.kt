@@ -19,10 +19,10 @@
 
 package dataTest
 
-import data.tools.graphGenerators.flowerSnark
-import data.tools.graphGenerators.randomTree
-import data.tools.graphGenerators.starDirected
-import data.tools.graphGenerators.starUndirected
+import data.tools.graphGenerators.algorithms.flowerSnark
+import data.tools.graphGenerators.algorithms.randomTree
+import data.tools.graphGenerators.algorithms.starDirected
+import data.tools.graphGenerators.algorithms.starUndirected
 import model.graph_model.Graph
 import org.junit.jupiter.api.DynamicTest
 import org.junit.jupiter.api.Nested

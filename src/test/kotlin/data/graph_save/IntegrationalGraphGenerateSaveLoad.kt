@@ -19,7 +19,7 @@
 
 package data.graph_save
 
-import data.tools.graphGenerators.randomTree
+import data.tools.graphGenerators.algorithms.randomTree
 import model.graph_model.Graph
 import model.graph_modelTests.assertGraphInvariant
 import org.junit.jupiter.api.Order

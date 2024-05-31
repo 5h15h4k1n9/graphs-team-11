@@ -2,7 +2,7 @@ package model.graph_modelTests
 
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
-import data.tools.graphGenerators.randomTree
+import data.tools.graphGenerators.algorithms.randomTree
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.test.runTest

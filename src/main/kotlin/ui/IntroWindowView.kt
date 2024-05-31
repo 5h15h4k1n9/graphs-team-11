@@ -55,6 +55,7 @@ import androidx.compose.ui.window.Window
 import androidx.compose.ui.window.rememberWindowState
 import data.Constants.APP_NAME
 import data.Constants.SETTINGS_SHORTCUT
+import data.tools.graphGenerators.AbstractGraphGenerator.GraphGeneratorType
 import kotlinx.coroutines.CoroutineScope
 import ui.components.GraphFilePicker
 import ui.components.MyWindowState
@@ -257,7 +258,7 @@ fun GenerateGraphSettings(
     ) {
         IntTextField(viewModel.graphSize)
 
-        if (viewModel.chosenGenerator.value == "Random Tree") {
+        if (viewModel.chosenGenerator.value == GraphGeneratorType.DEFAULT_GENERATOR) {
             Row(
                 verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(10.dp)
             ) {
@@ -277,7 +278,7 @@ fun GenerateGraphSettings(
             verticalArrangement = Arrangement.Center,
             horizontalArrangement = Arrangement.Center
         ) {
-            listOf("Random Tree", "Flower Snark", "Star Directed", "Star Undirected").forEach { graphType ->
+            GraphGeneratorType.getAll().forEach { graphType ->
                 Row(Modifier.padding(vertical = 4.dp), verticalAlignment = Alignment.CenterVertically) {
                     RadioButton(
                         selected = (viewModel.chosenGenerator.value == graphType),
@@ -285,7 +286,7 @@ fun GenerateGraphSettings(
                         colors = RadioButtonDefaults.colors(selectedColor = MaterialTheme.colors.surface)
                     )
                     Text(
-                        text = graphType,
+                        text = graphType.toString(),
                         style = MaterialTheme.typography.body1.merge(),
                         modifier = Modifier.padding(start = 5.dp),
                         fontSize = 20.sp
