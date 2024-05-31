@@ -22,10 +22,10 @@ package viewmodelTest
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import data.db.sqlite_exposed.connect
+import data.tools.graphGenerators.GraphGenerator.GraphGeneratorType
 import kotlinx.coroutines.test.StandardTestDispatcher
 import kotlinx.coroutines.test.TestScope
 import model.graph_model.Graph
-import org.junit.jupiter.api.BeforeEach
 import viewmodel.IntroWindowVM
 import kotlin.test.*
 
@@ -66,7 +66,7 @@ class IntroWindowVMTest {
     @Test
     fun `generateGraph returns correct graph based on chosenGenerator RandomTree`() {
         viewModel.graphSize.value = "5"
-        viewModel.chosenGenerator.value = "Random Tree"
+        viewModel.chosenGenerator.value = GraphGeneratorType.RandomTree
 
         val graph = viewModel.generateGraph(10)
 
@@ -76,7 +76,7 @@ class IntroWindowVMTest {
     @Test
     fun `generateGraph returns correct graph based on chosenGenerator FlowerSnark`() {
         viewModel.graphSize.value = "5"
-        viewModel.chosenGenerator.value = "Flower Snark"
+        viewModel.chosenGenerator.value = GraphGeneratorType.FlowerSnark
 
         val graph = viewModel.generateGraph(10)
 
@@ -86,7 +86,7 @@ class IntroWindowVMTest {
     @Test
     fun `generateGraph returns correct graph based on chosenGenerator StarDirected`() {
         viewModel.graphSize.value = "5"
-        viewModel.chosenGenerator.value = "Star Directed"
+        viewModel.chosenGenerator.value =  GraphGeneratorType.StarDirected
 
         val graph = viewModel.generateGraph(10)
 
@@ -96,22 +96,11 @@ class IntroWindowVMTest {
     @Test
     fun `generateGraph returns correct graph based on chosenGenerator StarUndirected`() {
         viewModel.graphSize.value = "5"
-        viewModel.chosenGenerator.value = "Star Undirected"
+        viewModel.chosenGenerator.value = GraphGeneratorType.StarUndirected
 
         val graph = viewModel.generateGraph(10)
 
         assertNotNull(graph)
-    }
-
-    @Test
-    fun `generateGraph returns empty graph if chosenGenerator is not recognized`() {
-        viewModel.graphSize.value = "5"
-        viewModel.chosenGenerator.value = "Not Recognized"
-
-        val graph = viewModel.generateGraph(10)
-
-        assertNotNull(graph)
-        assertTrue(graph.vertices.isEmpty())
     }
 
     @Test

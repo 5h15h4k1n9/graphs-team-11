@@ -24,6 +24,7 @@ import androidx.compose.ui.test.junit4.createComposeRule
 import data.Constants.CHOOSE_GRAPH_WINDOW_TITLE
 import data.db.sqlite_exposed.connect
 import data.db.sqlite_exposed.connectConfig
+import data.tools.graphGenerators.GraphGenerator.GraphGeneratorType
 import kotlinx.coroutines.*
 import model.graph_model.Graph
 import org.junit.Before
@@ -244,7 +245,7 @@ class IntroWindowViewTest {
         viewModel.chosenGraph.value = "Generate"
         viewModel.graphSize.value = "100"
         val graphSize = viewModel.graphSize.value.toInt()
-        viewModel.chosenGenerator.value = "Random Tree"
+        viewModel.chosenGenerator.value = GraphGeneratorType.DEFAULT_GENERATOR
         viewModel.weightMax.value = "10"
         composeTestRule.onNodeWithTag("CreateGraphButton").performClick()
 
@@ -272,7 +273,7 @@ class IntroWindowViewTest {
         viewModel.chosenGraph.value = "Generate"
         viewModel.graphSize.value = "100"
         val graphSize = viewModel.graphSize.value.toInt()
-        viewModel.chosenGenerator.value = "Random Tree"
+        viewModel.chosenGenerator.value = GraphGeneratorType.DEFAULT_GENERATOR
         viewModel.weightMax.value = "1"
         composeTestRule.onNodeWithTag("CreateGraphButton").performClick()
 
@@ -300,7 +301,7 @@ class IntroWindowViewTest {
         viewModel.chosenGraph.value = "Generate"
         viewModel.graphSize.value = "10"
         val graphSize = viewModel.graphSize.value.toInt()
-        viewModel.chosenGenerator.value = "Flower Snark"
+        viewModel.chosenGenerator.value = GraphGeneratorType.FlowerSnark
         composeTestRule.onNodeWithTag("CreateGraphButton").performClick()
 
         val newViewModel: MutableState<MainVM?> = mutableStateOf(null)

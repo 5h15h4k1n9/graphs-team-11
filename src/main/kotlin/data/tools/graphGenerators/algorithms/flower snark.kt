@@ -17,7 +17,7 @@
  *
  */
 
-package data.tools.graphGenerators
+package data.tools.graphGenerators.algorithms
 
 import model.graph_model.Graph
 
