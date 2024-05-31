@@ -55,7 +55,7 @@ import androidx.compose.ui.window.Window
 import androidx.compose.ui.window.rememberWindowState
 import data.Constants.APP_NAME
 import data.Constants.SETTINGS_SHORTCUT
-import data.tools.graphGenerators.AbstractGraphGenerator.GraphGeneratorType
+import data.tools.graphGenerators.GraphGenerator.GraphGeneratorType
 import kotlinx.coroutines.CoroutineScope
 import ui.components.GraphFilePicker
 import ui.components.MyWindowState

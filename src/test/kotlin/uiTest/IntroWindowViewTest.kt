@@ -24,7 +24,7 @@ import androidx.compose.ui.test.junit4.createComposeRule
 import data.Constants.CHOOSE_GRAPH_WINDOW_TITLE
 import data.db.sqlite_exposed.connect
 import data.db.sqlite_exposed.connectConfig
-import data.tools.graphGenerators.AbstractGraphGenerator.GraphGeneratorType
+import data.tools.graphGenerators.GraphGenerator.GraphGeneratorType
 import kotlinx.coroutines.*
 import model.graph_model.Graph
 import org.junit.Before

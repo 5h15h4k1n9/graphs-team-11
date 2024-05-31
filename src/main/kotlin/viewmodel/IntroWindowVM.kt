@@ -23,8 +23,8 @@ import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import data.db.sqlite_exposed.deleteGraph
 import data.db.sqlite_exposed.getAllGraphs
-import data.tools.graphGenerators.AbstractGraphGenerator.GraphGeneratorType
-import data.tools.graphGenerators.AbstractGraphGenerator.GraphGeneratorType.Companion.DEFAULT_GENERATOR
+import data.tools.graphGenerators.GraphGenerator.GraphGeneratorType
+import data.tools.graphGenerators.GraphGenerator.GraphGeneratorType.Companion.DEFAULT_GENERATOR
 import data.tools.graphGenerators.factory.GraphGeneratorFactoryImpl
 import kotlinx.coroutines.CoroutineScope
 import model.graph_model.Graph

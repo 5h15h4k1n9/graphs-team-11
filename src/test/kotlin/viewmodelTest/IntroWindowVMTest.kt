@@ -22,11 +22,10 @@ package viewmodelTest
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import data.db.sqlite_exposed.connect
-import data.tools.graphGenerators.AbstractGraphGenerator.GraphGeneratorType
+import data.tools.graphGenerators.GraphGenerator.GraphGeneratorType
 import kotlinx.coroutines.test.StandardTestDispatcher
 import kotlinx.coroutines.test.TestScope
 import model.graph_model.Graph
-import org.junit.jupiter.api.BeforeEach
 import viewmodel.IntroWindowVM
 import kotlin.test.*
 
